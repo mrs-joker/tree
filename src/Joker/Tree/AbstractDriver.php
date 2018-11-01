@@ -4,46 +4,13 @@ namespace MrsJoker\Tree;
 
 abstract class AbstractDriver
 {
+    public $model = null;
 
-
-    /**
-     * Decoder instance to init images from
-     *
-     * @var \Intervention\Image\AbstractDecoder
-     */
-    public $decoder;
-
-    /**
-     * Image encoder instance
-     *
-     * @var \Intervention\Image\AbstractEncoder
-     */
-    public $encoder;
-
-    /**
-     * Creates new image instance
-     *
-     * @param  int     $width
-     * @param  int     $height
-     * @param  string  $background
-     * @return \Intervention\Image\Image
-     */
-    abstract public function newImage($width, $height, $background);
-
-    abstract protected function newItem($parentId);
+    abstract protected function newItem($itemData);
 
     abstract protected function editItem($itemData);
 
     abstract protected function getItemData($id);
-    /**
-     * Returns clone of given core
-     *
-     * @return mixed
-     */
-    public function cloneCore($core)
-    {
-        return clone $core;
-    }
 
     /**
      * Initiates new image from given input
@@ -53,12 +20,8 @@ abstract class AbstractDriver
      */
     public function init($data)
     {
-//        if ()
-
-        return $this->decoder->init($data);
+        $this->model = $data;
     }
-
-
 
 
     /**

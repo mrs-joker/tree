@@ -23,7 +23,7 @@ class TreeServiceProvider extends ServiceProvider
     /**
      * Create a new service provider instance.
      *
-     * @param  \Illuminate\Contracts\Foundation\Application  $app
+     * @param  \Illuminate\Contracts\Foundation\Application $app
      * @return void
      */
     public function __construct($app)
@@ -62,13 +62,13 @@ class TreeServiceProvider extends ServiceProvider
      */
     private function getProvider()
     {
-        if ($this->app instanceof \Laravel\Lumen\Application) {
-            return false;
-        } elseif (version_compare(\Illuminate\Foundation\Application::VERSION, '5.0', '<')) {
-            return false;
-        } else {
-            $provider = '\MrsJoker\Tree\TreeServiceProviderLaravel';
-        }
+//        if ($this->app instanceof \Laravel\Lumen\Application) {
+//            return false;
+//        } elseif (version_compare(\Illuminate\Foundation\Application::VERSION, '5.0', '<')) {
+//            return false;
+//        } else {
+        $provider = '\MrsJoker\Tree\TreeServiceProviderLaravel';
+//        }
         return new $provider($this->app);
     }
 

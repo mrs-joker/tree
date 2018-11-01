@@ -10,53 +10,30 @@ class Driver extends \MrsJoker\Tree\AbstractDriver
      * @param Decoder $decoder
      * @param Encoder $encoder
      */
-    public function __construct(Decoder $decoder = null, Encoder $encoder = null)
+    public function __construct()
     {
         if ( ! $this->coreAvailable()) {
             throw new \Intervention\Image\Exception\NotSupportedException(
-                "ImageMagick module not available with this PHP installation."
+                "Tree module not available with this PHP Joker."
             );
         }
-
-        $this->decoder = $decoder ? $decoder : new Decoder;
-        $this->encoder = $encoder ? $encoder : new Encoder;
     }
 
-    /**
-     * Creates new image instance
-     *
-     * @param  int     $width
-     * @param  int     $height
-     * @param  mixed   $background
-     * @return \Intervention\Image\Image
-     */
-    public function newImage($width, $height, $background = null)
+    public function newItem($itemData)
     {
-        $background = new Color($background);
-
-        // create empty core
-        $core = new \Imagick;
-        $core->newImage($width, $height, $background->getPixel(), 'png');
-        $core->setType(\Imagick::IMGTYPE_UNDEFINED);
-        $core->setImageType(\Imagick::IMGTYPE_UNDEFINED);
-        $core->setColorspace(\Imagick::COLORSPACE_UNDEFINED);
-
-        // build image
-        $image = new \Intervention\Image\Image(new static, $core);
-
-        return $image;
+        // TODO: Implement newItem() method.
     }
 
-    /**
-     * Reads given string into color object
-     *
-     * @param  string $value
-     * @return AbstractColor
-     */
-    public function parseColor($value)
+    public function getItemData($id)
     {
-        return new Color($value);
+        // TODO: Implement getItemData() method.
     }
+
+    public function editItem($itemData)
+    {
+        // TODO: Implement editItem() method.
+    }
+
 
     /**
      * Checks if core module installation is available
@@ -65,6 +42,7 @@ class Driver extends \MrsJoker\Tree\AbstractDriver
      */
     protected function coreAvailable()
     {
-        return (extension_loaded('imagick') && class_exists('Imagick'));
+//        return (extension_loaded('imagick') && class_exists('Imagick'));
+        return true;
     }
 }
