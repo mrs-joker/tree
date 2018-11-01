@@ -1,0 +1,11 @@
+{
+  "providers": [
+    "MrsJoker\\Tree\\TreeServiceProvider"
+  ],
+  "aliases": [
+    {
+      "alias": "Tree",
+      "facade": "MrsJoker\\Tree\\Facades\\Tree"
+    }
+  ]
+}
