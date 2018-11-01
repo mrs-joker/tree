@@ -8,8 +8,8 @@ class TreeManager
 {
     /**
      * Config
-     *
-     * @var array
+     *D:\share\laraverl\joker\vendor\mrs-joker\tree\src\Joker\Tree\TreeManager.php
+     * @var array 
      */
     public $config = [
         'driver' => 'mysql'
