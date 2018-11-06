@@ -3,13 +3,14 @@
 namespace MrsJoker\Tree;
 
 use Closure;
+use MrsJoker\Tree\Exception\TreeException;
 
 class TreeManager
 {
     /**
      * Config
-     *D:\share\laraverl\joker\vendor\mrs-joker\tree\src\Joker\Tree\TreeManager.php
-     * @var array 
+     *
+     * @var array
      */
     public $config = [
         'driver' => 'mysql'
@@ -45,17 +46,16 @@ class TreeManager
      *
      * @param  mixed $data
      *
-     * @return \Intervention\Image\Image
      */
     public function make($data)
     {
-        return $this->createDriver()->init($data);
+        return $this->createDriver()->init($data, $this->config);
     }
 
     /**
      * Creates a driver instance according to config settings
-     *
-     * @return \Intervention\Image\AbstractDriver
+     * @return mixed
+     * @throws TreeException
      */
     private function createDriver()
     {
@@ -67,16 +67,13 @@ class TreeManager
                 return new $driverclass;
             }
 
-            throw new \Intervention\Image\Exception\NotSupportedException(
-                "Driver ({$drivername}) could not be instantiated."
-            );
+            throw new TreeException("Driver ({$drivername}) could not be instantiated.");
         }
 
         if ($this->config['driver'] instanceof AbstractDriver) {
             return $this->config['driver'];
         }
-
-        throw new \Intervention\Image\Exception\NotSupportedException(
+        throw new TreeException(
             "Unknown driver type."
         );
     }
