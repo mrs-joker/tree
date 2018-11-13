@@ -3,6 +3,10 @@ tree everything
 
 
 table
+
+
+
+
 CREATE TABLE `trees` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '序号',
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '父类ID',
